@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeploy
+  labels:
+    type: frontend
+    env: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: frontend
+  template:
+    metadata:
+      labels:
+        type: frontend
+    spec:
+      containers:
+      - name: helloworld
+        image: meharjashwanth/sonnu:v7
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
